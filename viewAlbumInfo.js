@@ -1,13 +1,24 @@
 async function viewAlbumInfo(albumId) {
     try {
-      
+
         // Get album info
-        let track = await fetch(`https://api.spotify.com/v1/albums/${albumId}/tracks`);
+        let tracks = await fetch(`https://api.spotify.com/v1/albums/${albumId}/tracks`);
 
         // Parse data
-        let parsedTrack = await track.json();
+        let parsedTracks = await tracks.json();
 
-        return parsedTrack.items;
+        let trackList = await parsedTracks.items;
+
+        let trackIds = [];
+
+        for (let track of trackList) {
+          await trackIds.push(track.id);
+        }
+
+        strList = await trackIds.join();
+
+        await getTrackRating(strList);
+        // return parsedTrack.items;
     }
 
     //Error handler
