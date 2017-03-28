@@ -1,119 +1,81 @@
-// jshint esversion:6
-// // const artist = document.getElementById('artist');
-// const info = document.getElementById('info');
-// const loader = document.getElementById('loader');
-// // // const year = document.getElementById('year');
-// // // const songs = document.getElementById('songs');
-// //
+//jshint esversion:6
+// const artist = document.getElementById('artist');
+
+// // const year = document.getElementById('year');
+// // const songs = document.getElementById('songs');
 //
-// function displaySongs(tracks) {
-//      for (let track of tracks) {
-//        info.innerHTML += `<div class="card">
-//        <div class="columns">
-//        <div class="column col-4">
-//                  <div class="card-image">
-//                <a href=https://embed.spotify.com/?uri=${track.uri} target=_blank>Play</a>
-//                  </div>
-//                  </div>
-//                  <div class="column col-8">
-//                  <div class="card-header">
-//                    <div class="card-title">${track.name}</div>
-//                    <div class="card-subtitle">${track.rating}</div>
-//                  </div>
-//                </div>
-//                </div>
-//          </div>
-//      `;
-//      }
-//      info.classList.remove('loading');
-// }
-// let ratingArr = [];
-//
-// function artistAlbumHandler(artist) {
-//   let albumPromise = getAlbums(artist);
-//
-//   albumPromise.then(data => {
-//
-//     // Album array to store ids
-//     let albumIdArr = [];
-//
-//     // Looping through data arr to push all album ids
-//     for (let album of data.albums.items) {
-//       albumIdArr.push(album.id);
-//     }
-//
-//     // Get info for each album
-//     for (let id of albumIdArr) {
-//       albumInfoHandler(id);
-//     }
-//
-//     // return albumInfoHandler(strAlbums);
-//   });
-//
-//   albumPromise.catch(err => {
-//     console.log(`Could not complete action, err: ${err}`);
-//   });
-// }
-//
-// function albumInfoHandler(albumId) {
-//
-//   let albumInfoPromise = viewAlbumInfo(albumId);
-//
-//   albumInfoPromise.then(data => {
-//
-//     // Track arr to store tracks
-//     let trackIdArr = [];
-//
-//     // Push all tracks of each album
-//     for (let track of data) {
-//       trackIdArr.push(track.id);
-//     }
-//
-//     //Convert track arr to string to make valid request
-//     let trackIds = trackIdArr.join();
-//
-//     trackHandler(trackIds);
-//   });
-//
-//   albumInfoPromise.catch(err => {
-//     console.log(`Could not complete action, err: ${err}`);
-//   });
-//
-// }
-//
-// function trackHandler(trackIds) {
-//   let trackInfoPromise = getTrackRating(trackIds);
-//   trackInfoPromise.then(data => {
-//     for (let track of data) {
-//       console.log(track);
-//       ratingArr.push({track: track.name, rating: track.popularity, uri: track.uri});
-//     }
-//     ratingArr.sort(function(a,b){
-//       return b.rating - a.rating;
-//     });
-//     info.innerHTML = '';
-//     for (let obj of ratingArr) {
-//       info.innerHTML += `<div class="card">
-//       <div class="columns">
-//       <div class="column col-4">
-//                 <div class="card-image">
-//               <a href=https://embed.spotify.com/?uri=${obj.uri} target=_blank>Play</a>
-//                 </div>
-//                 </div>
-//                 <div class="column col-8">
-//                 <div class="card-header">
-//                   <div class="card-title">${obj.track}</div>
-//                   <div class="card-subtitle">${obj.rating}</div>
-//                 </div>
-//               </div>
-//               </div>
-//         </div>
-//     `;
-//     }
-//   });
-//
-//   trackInfoPromise.catch(err => {
-//     console.log(`Could not complete action, err: ${err}`);
-//   });
-//
-// }
+
+function displaySongs(tracks) {
+       info.innerHTML = '';
+       tracks.forEach(track => {
+       info.innerHTML += `
+            <div class="column col-2">
+              <div class="card">
+              <div class="thumb">
+              <a href="${track.external_urls.spotify}" target="_blank">
+              <span class="play">&#9658;</span>
+              <div class="overlay"></div>
+              </a>
+                <div class="card-header">
+                  <div class="card-title text-center">${track.name}</div>
+                  <div class="pt-20 clearfix">
+                  <div class="bar">
+              <div class="bar-item bar-item-green" style="width:${track.popularity}%;">${track.popularity}</div>
+            </div>
+          </div>
+          <div class="pt-20 clearfix">
+                <div class="card-image">
+  <img class="img-responsive" src="${track.album.images[1].url}">
+</div>
+                </div>
+                </div>
+              </div>
+              </div>
+     `;
+   });
+
+   return loader.classList.remove('loading');
+ }
+
+
+async function getTopRatedTracks() {
+
+  loader.classList.add('loading');
+
+  let artist = searchField.value;
+
+  let albums = await getAlbums(artist);
+
+  if (albums.length < 1) {
+    info.innerHTML = '';
+    errorMessage.innerHTML = `<h2>Sorry, no albums found for "${artist}"</h2>`
+    return loader.classList.remove('loading');
+  }
+
+  else {
+    errorMessage.innerHTML = '';
+    let trackList = [];
+
+
+    for (let album of albums) {
+      if (album.artists[0].name.toLowerCase() === artist.toLowerCase()) {
+      let trackIds = await viewAlbumInfo(album.id);
+      let tracks = await getTrackRating(trackIds.join());
+      trackList.push(tracks);
+      }
+    }
+
+    let flatten = trackList.reduce((cur, prev) => cur.concat(prev));
+
+    let ratingArr = flatten.sort(function(a,b)  {
+      return b.popularity - a.popularity;
+    });
+
+    let finalArr = ratingArr.filter((track, index) => {
+      if(index < 51)
+        return track;
+    });
+
+    return displaySongs(finalArr);
+    }
+}
