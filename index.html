@@ -1,34 +1,68 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
     <title>Top Tracks</title>
-    <link rel="stylesheet" href="css/spectre.min.css">
+    <link rel="stylesheet" href="src/css/spectre.min.css">
+    <link rel="stylesheet" href="src/icons/css/font-awesome.min.css">
+    <link rel="stylesheet" href="src/css/main.css">
   </head>
-  <div class="container grid-960">
-    <div class="columns">
-      <div class="column col-8">
-        <input class="form-input" type="text" id="artist-search" placeholder="Enter artist">
-      </div>
-      <div class="column col-4">
-        <button class="btn btn-primary" id="artist-search-button">Submit</button>
-      </div>
-    </div>
 
+  <div class="modal active" id="info-modal">
+                <div class="modal-overlay"></div>
+                <div class="modal-container" role="document">
+                  <div class="modal-header">
+                    <button type="button" class="btn btn-clear float-right" aria-label="Close" id="close-modal-button"></button>
+                    <div class="modal-title">User Info</div>
+                  </div>
+                  <div class="modal-body">
+                    <div class="content">
+                      To best use this app, make sure your Spotify client on your device is running.
+                      If not, you can still use the app. However, you will only be able to listen to a 30 second preview of each song.
+                      You can open Spotify by clicking on the button below.
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <a class="btn btn-primary btn-green" id="open-spotify-button" href="spotify:">OPEN SPOTIFY</a>
+                  </div>
+                </div>
+              </div>
+
+
+  <div class="container grid-960">
+    <div class="empty hide" id="search-box">
+  <div class="empty-icon">
+    <i class="icon icon-people"></i>
+  </div>
+  <h4 class="empty-title">GET TOP 50 SONGS OF YOUR FAVORITE ARTIST</h4>
+  <div class="empty-action">
+    <div class="input-group">
+      <input class="form-input form-green" type="text" id="artist-search" placeholder="Enter artist">
+      <button class="btn btn-primary btn-green" id="artist-search-button">GET SONGS</button>
+    </div>
+  </div>
+</div>
+</div>
+
+  <div class="container grid-960 clearfix pt-40">
+    <div class="loading-big loading-green" id="loader">
+
+    </div>
   </div>
 
-  <div class="container grid-960">
-    <div id="loader">
-
+  <div class="container grid-960 clearfix pt-40">
+    <div class="text-center" id="error-message">
     </div>
   </div>
 
-    <div class="container grid-960" id="info">
+    <div class="container container-extra-padding">
+      <div class="columns" id="info">
+      </div>
     </div>
 
-    <script src="getAlbums.js"></script>
-    <script src="viewAlbumInfo.js"></script>
-    <script src="getTrackRating.js"></script>
-    <script src="handlers.js"></script>
-    <script src="main.js"></script>
+    <script src="src/js/model.js"></script>
+    <script src="src/js/elements.js"></script>
+    <script src="src/js/view.js"></script>
+    <script src="src/js/controller.js"></script>
+    <script src="src/js/app.js"></script>
   </body>
 </html>

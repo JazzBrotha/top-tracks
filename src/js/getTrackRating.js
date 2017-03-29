@@ -1,4 +1,4 @@
-let ratingArr = [];
+
 async function getTrackRating(trackIds) {
 
   try {
@@ -6,14 +6,7 @@ async function getTrackRating(trackIds) {
 
     let parsedTrackList = await trackList.json();
 
-    for (let track of parsedTrackList.tracks) {
-      await ratingArr.push({name: track.name, rating: track.popularity});
-    }
-
-    await ratingArr.sort(function(a,b){
-      return b.rating - a.rating;
-    });
-
+    return parsedTrackList.tracks;
 }
 
 catch (error) {

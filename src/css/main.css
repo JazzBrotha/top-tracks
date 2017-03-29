@@ -1,0 +1,67 @@
+
+.btn.btn-primary.btn-green {
+  background: #1DB954;
+  border-color: #1DB954;
+  color: #FFFFFF;
+}
+
+.form-green:focus {
+  border-color: #1DB954;
+}
+
+.container.container-extra-padding {
+  padding: 5em;
+}
+
+.pt-40 {
+  padding-top: 4rem;
+}
+
+.loading-big:after {
+  height: 3.2rem;
+  width: 3.2rem;
+  border-radius: 1.6rem;
+}
+
+.loading-green:after {
+  border-color: #1DB954;
+  border-right-color: transparent;
+  border-top-color: transparent;
+}
+
+.bar-item.bar-item-green {
+  background-color: #1DB954;
+}
+
+.card {
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+  position: relative;
+  bottom: 0;
+  text-align: center;
+}
+
+.card:hover {
+  bottom: 6px;
+  box-shadow: 0 6px 18px 0 rgba(232,237,250,.5);
+}
+
+.card.card-no-border {
+  border: none;
+}
+
+.bar.bar-fixed-width {
+  width: 250px;
+}
+
+.bgc-grey {
+  background-color: #282828;
+}
+
+.bgc-black {
+  background-color: #001723;
+}
+
+.fa-play-circle-o-white {
+  color: white;
+}

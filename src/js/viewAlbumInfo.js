@@ -7,17 +7,15 @@ async function viewAlbumInfo(albumId) {
         // Parse data
         let parsedTracks = await tracks.json();
 
-        let trackList = await parsedTracks.items;
+        let trackList = parsedTracks.items;
 
         let trackIds = [];
 
         for (let track of trackList) {
-          await trackIds.push(track.id);
+          trackIds.push(track.id);
         }
 
-        strList = await trackIds.join();
-
-        await getTrackRating(strList);
+        return trackIds;
         // return parsedTrack.items;
     }
 
