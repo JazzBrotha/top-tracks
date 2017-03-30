@@ -8,34 +8,43 @@ const View = {
             <div class="column col-xs-12 col-md-4 col-2">
             <div class="card card-no-border">
               <div class="card-header card-header-less-padding">
-                <div class="columns bgc-grey">
+                <div class="columns bgc-grey text-center">
                   <div class="column col-2 border-right flex-center">
-                  <span class="tc-light-grey">${track.popularity}</span>
+                  <span class="tc-spotify-green">${track.popularity}</span>
                   </div>
                   <div class="column col-10">
-                  <span class="tc-solid-white">${track.name}</span>
+                    <div class="fixed-height no-overflow">
+                      <span class="tc-solid-white">${track.name}</span>
+                    </div>
+                    <div class="fixed-height no-overflow">
+                      <span class="tc-light-grey">${track.album.name}</span>
+                    </div>
                   </div>
                 </div>
               </div>
               <div class="card-body bgc-black">
-              <div class="thumb flex-center">
+              <div class="play-icon-holder text-center">
                 <a href="https://embed.spotify.com/?uri=${track.uri}" target="_blank">
-                  <span class="play"><i class="fa fa-2x fa-play-circle-o fa-play-circle-o-white" aria-hidden="true"></i></span>
+                  <span class="play-icon tooltip"><i class="fa fa-2x fa-play-circle-o" aria-hidden="true"></i></span>
                   <div class="overlay"></div>
                 </a>
-                <img class="img-responsive album-cover">
+                <img class="img-responsive img-min-height album-cover">
               </div>
               </div>
             </div>
          </div>
      `;
 
+     // Tooltip assignment
+     let songLengthStr = track.duration_ms.toString();
+     Elements.toolTip[index].setAttribute('data-tooltip', `${songLengthStr[0]}:${songLengthStr[1]}${songLengthStr[2]}`);
+
      // Check if track has album image
      if (track.album.images.length < 1) {
        Elements.albumCover[index].src = './src/pics/album-cover.png';
      }
      else {
-       Elements.albumCover[index].src = `${track.album.images[1].url}`;
+       Elements.albumCover[index].src = `${track.album.images[0].url}`;
      }
    });
 
@@ -46,7 +55,7 @@ clearHtml(element) {
   element.innerHTML = '';
 },
 displayErrorMessage(artist) {
-  Elements.errorMessage.innerHTML = `<h2>Sorry, no albums found for "${artist}"</h2>`;
+  Elements.errorMessage.innerHTML = `<h2>Sorry, no songs found for "${artist}"</h2>`;
 },
 addClass(element, cssClass) {
   element.classList.add(cssClass);

@@ -16,9 +16,11 @@
                   </div>
                   <div class="modal-body">
                     <div class="content">
-                      To best use this app, make sure your Spotify client on your device is running.
-                      If not, you can still use the app. However, you will only be able to listen to a 30 second preview of each song.
-                      You can open Spotify by clicking on the button below.
+                      <p class="text-large">
+                        To best use this app, make sure the Spotify client on your device is running.
+                        If not, you can still use the app. However, you will only be able to listen to a 30 second preview of each song.
+                        You can open Spotify by clicking on the button below (requires Spotify to be installed).
+                      </p>
                     </div>
                   </div>
                   <div class="modal-footer">
@@ -28,23 +30,18 @@
               </div>
 
 
-  <div class="container grid-960">
+  <div class="container">
     <div class="empty hide" id="search-box">
   <div class="empty-icon">
-    <i class="icon icon-people"></i>
-  </div>
+    <i class="fa fa-5x fa-headphones" aria-hidden="true"></i>  </div>
   <h4 class="empty-title">GET TOP 50 SONGS OF YOUR FAVORITE ARTIST</h4>
-  <div class="empty-action">
-    <div class="input-group columns">
-      <div class="column col-xs-12">
-        <input required class="form-input form-green" type="text" id="artist-search" placeholder="Enter artist" title="Please enter at least one character">
+    <form id="artist-search-form">
+      <div class="empty-action input-group input-inline">
+        <input required class="form-input form-green" type="text" placeholder="Enter artist" id="artist-search-field">
+        <button class="btn btn-primary btn-green" type="submit" form="artist-search-form">GET SONGS</button>
       </div>
-      <div class="column col-xs-12">
-        <button class="btn btn-primary btn-green" id="artist-search-button">GET SONGS</button>
-      </div>
-    </div>
+    </form>
   </div>
-</div>
 </div>
 
   <div class="container grid-960 clearfix pt-40">

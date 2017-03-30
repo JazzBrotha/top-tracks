@@ -9,6 +9,7 @@ const Elements = {
   loader : document.getElementById('loader'),
   openSpotify : document.getElementById('open-spotify-button'),
   searchBox : document.getElementById('search-box'),
-  searchButton : document.getElementById('artist-search-button'),
-  searchField : document.getElementById('artist-search')
+  searchField : document.getElementById('artist-search-field'),
+  searchForm : document.getElementById('artist-search-form'),
+  toolTip : document.getElementsByClassName('tooltip')
 };

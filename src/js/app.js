@@ -1,6 +1,5 @@
   // jshint esversion:6
 
-  const ENTER_KEY = 13;
   const SPACE_BAR = 32;
 
   Elements.closeModal.onclick = function() {
@@ -14,18 +13,14 @@
   };
 
   // Enable user to search with enter key
-  Elements.searchField.addEventListener('keyup', function(e) {
-    if (e.which === ENTER_KEY) {
-      Controller.getTopRatedTracks();
-    }
+  Elements.searchForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    Controller.getTopRatedTracks();
   });
 
   //Prevents blank space as first character in input field
-   Elements.input.addEventListener("keydown", function(event) {
-       if (event.which === SPACE_BAR && event.target.selectionStart === 0) {
-           event.preventDefault();
+   Elements.input.addEventListener("keydown", function(e) {
+       if (e.which === SPACE_BAR && e.target.selectionStart === 0) {
+           e.preventDefault();
          }
        });
-
-  // Bind search button
-  Elements.searchButton.onclick = Controller.getTopRatedTracks;
