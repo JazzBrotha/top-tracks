@@ -16,7 +16,7 @@ getTopRatedTracks: async function() {
   // Inform user if no albums was found for artist
   if (albums.length < 1) {
     View.clearHtml(Elements.info);
-    View.displayErrorMessage();
+    View.displayErrorMessage(artist);
     View.removeClass(Elements.loader, 'loading');
   }
 
@@ -38,12 +38,21 @@ getTopRatedTracks: async function() {
         // Get track ratings
         let tracks = await Model.getTrackRating(trackIds.join());
 
+        // Look for non exact matches
+        if (album.artists[0].name.toLowerCase() === artist.toLowerCase() || album.artists[0].name.includes('The')) {
+
         // Add to trackList
         trackList.push(tracks);
+        }
       }
-          // Check for exact artist match
-          // if (album.artists[0].name.toLowerCase() === artist.toLowerCase()) {}
 
+      if (trackList.length < 1) {
+        View.clearHtml(Elements.info);
+        View.displayErrorMessage(artist);
+        View.removeClass(Elements.loader, 'loading');
+      }
+
+      else {
     // Reduce to single array
     let flatten = trackList.reduce((cur, prev) => cur.concat(prev));
 
@@ -60,6 +69,7 @@ getTopRatedTracks: async function() {
 
     // Display tracks on page
     View.displaySongs(finalArr);
+    }
+    }
   }
-}
 };
