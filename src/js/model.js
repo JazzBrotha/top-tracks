@@ -1,64 +1,70 @@
 const Model = {
-  getAlbums: async function (artist) {
-  try {
+    getAlbums: async function(artist) {
 
-    // Fetching all albums from artist search
-    let albums = await fetch(`https://api.spotify.com/v1/search?q=artist:${artist}&type=album`);
+        try {
+          
+            // Fetching all albums from artist
+            let albums = await fetch(`https://api.spotify.com/v1/search?q=artist:${artist}&type=album`);
 
-    // Parsing albums
-    let parsedAlbums = await albums.json();
+            // Parse album object
+            let parsedAlbums = await albums.json();
 
-    let albumArr = parsedAlbums.albums.items;
+            // Create album array
+            let albumArr = parsedAlbums.albums.items;
 
-    return albumArr;
-
-}
-  catch (error) {
-      console.log(`Could not get artist information: ${error}`);
-  }
-},
-
-viewAlbumInfo: async function (albumId) {
-    try {
-
-        // Get album info
-        let tracks = await fetch(`https://api.spotify.com/v1/albums/${albumId}/tracks`);
-
-        // Parse data
-        let parsedTracks = await tracks.json();
-
-        let trackList = parsedTracks.items;
-
-        let trackIds = [];
-
-        for (let track of trackList) {
-          trackIds.push(track.id);
+            return albumArr;
         }
 
-        return trackIds;
+        catch (error) {
+            console.log(`Could not get artist information: ${error}`);
+        }
+    },
+
+    getTrackIds: async function(albumId) {
+
+        try {
+
+            // Fetch track object from album
+            let tracks = await fetch(`https://api.spotify.com/v1/albums/${albumId}/tracks`);
+
+            // Parse track object
+            let parsedTracks = await tracks.json();
+
+            // Create tracklist array
+            let trackList = parsedTracks.items;
+
+            let trackIds = [];
+
+            // Get ids from tracklist
+            for (let track of trackList) {
+                trackIds.push(track.id);
+            }
+
+            return trackIds;
+        }
+
+        catch (error) {
+            console.log(`Could not get album information: ${error}`);
+        }
+    },
+
+    getTracks: async function(trackIds) {
+
+        try {
+
+            // Fetch track objects
+            let trackList = await fetch(`https://api.spotify.com/v1/tracks/?ids=${trackIds}`);
+
+            // Parse track objects
+            let parsedTrackList = await trackList.json();
+
+            // Return tracks
+            return parsedTrackList.tracks;
+        }
+
+        catch (error) {
+            console.log(`Could not get track rating information: ${error}`);
+        }
     }
-
-    //Error handler
-    catch (error) {
-        console.log(`Could not get album information: ${error}`);
-    }
-},
-
-getTrackRating: async function (trackIds) {
-
-  try {
-    let trackList = await fetch(`https://api.spotify.com/v1/tracks/?ids=${trackIds}`);
-
-    let parsedTrackList = await trackList.json();
-
-    return parsedTrackList.tracks;
-}
-
-catch (error) {
-    console.log(`Could not get track rating information: ${error}`);
-}
-
-}
-
 
 }

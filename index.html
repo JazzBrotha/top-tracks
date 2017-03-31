@@ -1,69 +1,70 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>Top Tracks</title>
     <link rel="stylesheet" href="src/css/spectre.min.css">
     <link rel="stylesheet" href="src/icons/css/font-awesome.min.css">
     <link rel="stylesheet" href="src/css/main.css">
-  </head>
+</head>
 
-  <div class="modal active" id="info-modal">
-                <div class="modal-overlay"></div>
-                <div class="modal-container" role="document">
-                  <div class="modal-header">
-                    <button type="button" class="btn btn-clear float-right" aria-label="Close" id="close-modal-button"></button>
-                    <div class="modal-title">User Info</div>
-                  </div>
-                  <div class="modal-body">
-                    <div class="content">
-                      <p class="text-large">
-                        To best use this app, make sure the Spotify client on your device is running.
-                        If not, you can still use the app. However, you will only be able to listen to a 30 second preview of each song.
-                        You can open Spotify by clicking on the button below (requires Spotify to be installed).
-                      </p>
-                    </div>
-                  </div>
-                  <div class="modal-footer">
-                    <a class="btn btn-primary btn-green" id="open-spotify-button" href="spotify:">OPEN SPOTIFY</a>
-                  </div>
-                </div>
-              </div>
-
-
-  <div class="container">
-    <div class="empty hide" id="search-box">
-  <div class="empty-icon">
-    <i class="fa fa-5x fa-headphones" aria-hidden="true"></i>  </div>
-  <h4 class="empty-title">GET TOP 50 SONGS OF YOUR FAVORITE ARTIST</h4>
-    <form id="artist-search-form">
-      <div class="empty-action input-group input-inline">
-        <input required class="form-input form-green" type="text" placeholder="Enter artist" id="artist-search-field">
-        <button class="btn btn-primary btn-green" type="submit" form="artist-search-form">GET SONGS</button>
-      </div>
-    </form>
-  </div>
+<div class="modal active hide-xs" id="info-modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-container" role="document">
+        <div class="modal-header">
+            <button type="button" class="btn btn-clear float-right" aria-label="Close" id="close-modal-button"></button>
+            <div class="modal-title">User Info</div>
+        </div>
+        <div class="modal-body">
+            <div class="content">
+                <p class="text-large">
+                    To best use this app, make sure the Spotify client on your device is running. If not, you can still use the app. However, you will only be able to listen to a 30 second preview of each song. You can open Spotify by clicking on the button below (requires
+                    Spotify to be installed).
+                </p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a class="btn btn-primary btn-green" id="open-spotify-button" href="spotify:">OPEN SPOTIFY</a>
+        </div>
+    </div>
 </div>
 
-  <div class="container grid-960 clearfix pt-40">
+
+<div class="container">
+    <div class="empty show-xs" id="search-box">
+        <div class="empty-icon">
+            <i class="fa fa-5x fa-headphones" aria-hidden="true"></i> </div>
+        <h4 class="empty-title">PLAY TOP 50 SONGS OF YOUR FAVORITE ARTIST</h4>
+        <form id="artist-search-form">
+            <div class="empty-action input-group input-inline">
+                <input required class="form-input form-green" type="text" placeholder="Enter artist" id="artist-search-field">
+                <button class="btn btn-primary btn-green" type="submit" form="artist-search-form"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="container grid-960 clearfix pt-40">
     <div class="loading-big loading-green" id="loader">
 
     </div>
-  </div>
+</div>
 
-  <div class="container grid-960 clearfix pt-40">
+<div class="container grid-960 clearfix pt-40">
     <div class="text-center" id="error-message">
     </div>
-  </div>
+</div>
 
-    <div class="container container-extra-padding">
-      <div class="columns" id="info">
-      </div>
+<div class="container">
+    <div class="columns" id="info">
     </div>
+</div>
 
-    <script src="src/js/model.js"></script>
-    <script src="src/js/elements.js"></script>
-    <script src="src/js/view.js"></script>
-    <script src="src/js/controller.js"></script>
-    <script src="src/js/app.js"></script>
-  </body>
+<script src="src/js/model.js"></script>
+<script src="src/js/elements.js"></script>
+<script src="src/js/view.js"></script>
+<script src="src/js/controller.js"></script>
+<script src="src/js/app.js"></script>
+</body>
+
 </html>
