@@ -36,4 +36,4 @@ This project is live on: https://jazzbrotha.github.io/top-tracks/
 **Education:** Front End Developer, Nackademin
 
 ## License
-MIT License.
+[MIT License](https://github.com/JazzBrotha/top-tracks/blob/master/LICENSE)
