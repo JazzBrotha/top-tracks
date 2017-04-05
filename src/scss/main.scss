@@ -1,109 +1,4 @@
-@import 'functions', 'mixins', 'variables';
-
-/* MOBILE PHONE COLUMN GRID */
-
-/* TABLET COLUMN GRID */
-@media #{$tablet} {
-    .col-t-1 {
-        width: calculate-col-width(1);
-    }
-
-    .col-t-2 {
-        width: calculate-col-width(2);
-    }
-
-    .col-t-3 {
-        width: calculate-col-width(3);
-    }
-
-    .col-t-4 {
-        width: calculate-col-width(4);
-        padding: 1rem;
-    }
-
-    .col-t-5 {
-        width: calculate-col-width(5);
-    }
-
-    .col-t-6 {
-        width: calculate-col-width(6);
-    }
-
-    .col-t-7 {
-        width: calculate-col-width(7);
-    }
-
-    .col-t-8 {
-        width: calculate-col-width(8);
-    }
-
-    .col-t-9 {
-        width: calculate-col-width(9);
-    }
-
-    .col-t-10 {
-        width: calculate-col-width(10);
-    }
-
-    .col-t-11 {
-        width: calculate-col-width(11);
-    }
-
-    .col-t-12 {
-        width: calculate-col-width(12);
-    }
-}
-/* DESKTOP COLUMN GRID */
-@media #{$desktop} {
-    .column.col-d-1 {
-        width: calculate-col-width(1);
-    }
-
-    .col-d-2 {
-        width: calculate-col-width(2);
-        padding: 1rem;
-    }
-
-    .column.col-d-3 {
-        width: calculate-col-width(3);
-    }
-
-    .column.col-d-4 {
-        width: calculate-col-width(4);
-    }
-
-    .column.col-d-5 {
-        width: calculate-col-width(5);
-    }
-
-    .column.col-d-6 {
-        width: calculate-col-width(6);
-    }
-
-    .column.col-d-7 {
-        width: calculate-col-width(7);
-    }
-
-    .column.col-d-8 {
-        width: calculate-col-width(8);
-    }
-
-    .column.col-d-9 {
-        width: calculate-col-width(9);
-    }
-
-    .column.col-d-10 {
-        width: calculate-col-width(10);
-    }
-
-    .column.col-d-11 {
-        width: calculate-col-width(11);
-    }
-
-    .column.col-d-12 {
-        width: calculate-col-width(12);
-    }
-}
+@import 'functions', 'mixins', 'variables', 'placeholders';
 
 .btn.btn-primary.btn-green {
     background: $spotifyGreen;
@@ -161,6 +56,10 @@
     background-color: #001723;
 }
 
+.bgc-green {
+  background-color: $spotifyGreen;
+}
+
 .tc-light-grey {
     color: #C1C3C6;
 }
@@ -191,7 +90,10 @@
 }
 
 .fixed-height {
+  height: 2.5rem;
+  @media #{$desktop} {
     height: 2rem;
+    }
 }
 
 .img-min-height {
@@ -199,6 +101,9 @@
     min-height: 254px;
 }
 
+// .container-image {
+//   @extend %bg-image;
+// }
 
 /* Play Button */
 
@@ -231,9 +136,12 @@
 .play-icon-holder a:hover .play-icon {
     position: relative;
     color: $white;
-    margin-top: 80px;
     z-index: 1000;
+    margin-top: 120px;
     opacity: 1;
+      @media #{$desktop} {
+            margin-top: 80px;
+      }
 }
 
 .play-icon-holder a:hover .overlay {

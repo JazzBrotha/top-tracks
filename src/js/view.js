@@ -26,7 +26,7 @@ export default {
               <div class="play-icon-holder text-center">
                 <a class="play-link">
                   <span class="play-icon tooltip"></span>
-                  <div class="overlay loading-big loading-green"></div>
+                  <div class="overlay"></div>
                 </a>
                 <img class="img-responsive img-min-height album-cover">
               </div>

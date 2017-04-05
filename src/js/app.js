@@ -1,5 +1,6 @@
 import 'babel-polyfill'
 import '../scss/spectre.scss'
+import '../scss/spectre-icons.scss'
 import '../scss/main.scss'
 import Elements from './elements'
 import View from './view'
