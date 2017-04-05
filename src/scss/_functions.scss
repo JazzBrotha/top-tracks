@@ -1,0 +1,32 @@
+@import 'variables';
+@function calculate-col-width ($col-span) {
+  @return (100% / 12) * $col-span;
+}
+
+// @each $number in 1, 2, 3, 4, 5 {
+//   .brand-image-#{$number} {
+//     background-image: url('../pics/brand#{$number}-bg.jpg');
+//   }
+// }
+//
+// @each $number in 1, 2, 3 {
+//   .bgimg-#{$number} {
+//     background-image: url('../pics/blackspider#{$number}.jpg');
+//   }
+//   .bgimg-#{$number}fix {
+//     background-image: url('../pics/blackspider#{$number}-fix.jpg');
+//   }
+// }
+
+// @each $h in h1, h2, h3, h4, h5, h6{
+//     #{$h} {
+//       font-size: $base-heading;
+//       @media #{$tablet} {
+//         font-size: $base-heading * 1.25;
+//       }
+//       @media #{$desktop} {
+//         font-size: $base-heading * 1.75;
+//     }
+//   }
+//     $base-heading: $base-heading - 0.3;
+// }

@@ -1,8 +1,8 @@
-const Model = {
+export default {
     getAlbums: async function(artist) {
 
         try {
-          
+
             // Fetching all albums from artist
             let albums = await fetch(`https://api.spotify.com/v1/search?q=artist:${artist}&type=album`);
 

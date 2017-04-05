@@ -1,0 +1,253 @@
+@import 'functions', 'mixins', 'variables';
+
+/* MOBILE PHONE COLUMN GRID */
+
+/* TABLET COLUMN GRID */
+@media #{$tablet} {
+    .col-t-1 {
+        width: calculate-col-width(1);
+    }
+
+    .col-t-2 {
+        width: calculate-col-width(2);
+    }
+
+    .col-t-3 {
+        width: calculate-col-width(3);
+    }
+
+    .col-t-4 {
+        width: calculate-col-width(4);
+        padding: 1rem;
+    }
+
+    .col-t-5 {
+        width: calculate-col-width(5);
+    }
+
+    .col-t-6 {
+        width: calculate-col-width(6);
+    }
+
+    .col-t-7 {
+        width: calculate-col-width(7);
+    }
+
+    .col-t-8 {
+        width: calculate-col-width(8);
+    }
+
+    .col-t-9 {
+        width: calculate-col-width(9);
+    }
+
+    .col-t-10 {
+        width: calculate-col-width(10);
+    }
+
+    .col-t-11 {
+        width: calculate-col-width(11);
+    }
+
+    .col-t-12 {
+        width: calculate-col-width(12);
+    }
+}
+/* DESKTOP COLUMN GRID */
+@media #{$desktop} {
+    .column.col-d-1 {
+        width: calculate-col-width(1);
+    }
+
+    .col-d-2 {
+        width: calculate-col-width(2);
+        padding: 1rem;
+    }
+
+    .column.col-d-3 {
+        width: calculate-col-width(3);
+    }
+
+    .column.col-d-4 {
+        width: calculate-col-width(4);
+    }
+
+    .column.col-d-5 {
+        width: calculate-col-width(5);
+    }
+
+    .column.col-d-6 {
+        width: calculate-col-width(6);
+    }
+
+    .column.col-d-7 {
+        width: calculate-col-width(7);
+    }
+
+    .column.col-d-8 {
+        width: calculate-col-width(8);
+    }
+
+    .column.col-d-9 {
+        width: calculate-col-width(9);
+    }
+
+    .column.col-d-10 {
+        width: calculate-col-width(10);
+    }
+
+    .column.col-d-11 {
+        width: calculate-col-width(11);
+    }
+
+    .column.col-d-12 {
+        width: calculate-col-width(12);
+    }
+}
+
+.btn.btn-primary.btn-green {
+    background: $spotifyGreen;
+    border-color: $spotifyGreen;
+    color: $white;
+}
+
+.form-green:focus {
+    border-color: $spotifyGreen;
+}
+
+.pt-40 {
+    padding-top: 4rem;
+}
+
+.loading-big:after {
+    height: 3.2rem;
+    width: 3.2rem;
+    border-radius: 1.6rem;
+}
+
+.loading-green:after {
+    border-color: $spotifyGreen;
+    border-right-color: transparent;
+    border-top-color: transparent;
+}
+
+.bar-item.bar-item-green {
+    background-color: $spotifyGreen;
+}
+
+.card {
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    @media #{$desktop} {
+      &:hover {
+        transform: scale(1.1);
+      }
+  }
+}
+
+.card.card-no-border {
+    border: none;
+}
+
+.bar.bar-fixed-width {
+    width: 250px;
+}
+
+.bgc-grey {
+    background-color: #282828;
+}
+
+.bgc-black {
+    background-color: #001723;
+}
+
+.tc-light-grey {
+    color: #C1C3C6;
+}
+
+.tc-spotify-green {
+    color: $spotifyGreen;
+}
+
+.tc-solid-white {
+    color: #FAFAFA;
+}
+
+.border-right {
+    border-right: 0.1rem solid #616467;
+}
+
+.card-header.card-header-less-padding {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.flex-center {
+   @include flex(center, center);
+}
+
+.no-overflow {
+    overflow: hidden;
+}
+
+.fixed-height {
+    height: 2rem;
+}
+
+.img-min-height {
+    display: none;
+    min-height: 254px;
+}
+
+
+/* Play Button */
+
+.play-icon-holder {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.play-icon-holder a {
+    position: absolute;
+    top: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+}
+
+.play-icon-holder a .play-icon, .play-icon-holder a .overlay {
+    opacity: 0;
+}
+
+.play-icon-holder a:hover .play-icon, .play-icon-holder a:hover .overlay {
+    display: block;
+    transition: opacity .25s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out;
+}
+
+.play-icon-holder a:hover .play-icon {
+    position: relative;
+    color: $white;
+    margin-top: 80px;
+    z-index: 1000;
+    opacity: 1;
+}
+
+.play-icon-holder a:hover .overlay {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $black;
+    opacity: .7;
+}
+
+.album-info-text {
+  font-size: 2rem;
+  @media #{$desktop} {
+      font-size: 1.4rem;
+    }
+}

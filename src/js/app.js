@@ -1,4 +1,11 @@
-  const SPACE_BAR = 32;
+import 'babel-polyfill'
+import '../scss/spectre.scss'
+import '../scss/main.scss'
+import Elements from './elements'
+import View from './view'
+import Controller from './controller'
+
+const SPACE_BAR = 32;
 
   Elements.closeModal.onclick = function() {
       View.removeClass(Elements.infoModal, 'active');

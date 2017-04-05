@@ -1,4 +1,8 @@
-const Controller = {
+import Elements from './elements'
+import View from './view'
+import Model from './model'
+
+export default {
 
     getTopRatedTracks: async function() {
 
@@ -37,7 +41,7 @@ const Controller = {
                 let tracks = await Model.getTracks(trackIds.join());
 
                 // Look for non exact matches
-                if (album.artists[0].name.toLowerCase() === artist.toLowerCase() || album.artists[0].name.includes('The')) {
+                if (album.artists[0].name.toLowerCase() === artist.toLowerCase() || album.artists[0].name.toLowerCase() === `the ${artist.toLowerCase()}`) {
 
                     // Add to trackList
                     trackList.push(tracks);
@@ -61,7 +65,7 @@ const Controller = {
 
                 // Get top 50 tracks
                 let finalArr = ratingArr.filter((track, index) => {
-                    if (index < 51)
+                    if (index <= 50)
                         return track;
                 });
 

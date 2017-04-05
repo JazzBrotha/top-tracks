@@ -1,4 +1,4 @@
-const Elements = {
+export default {
   albumCover: document.getElementsByClassName('album-cover'),
   closeModal : document.getElementById('close-modal-button'),
   creator : document.getElementById("creator"),
@@ -8,8 +8,10 @@ const Elements = {
   input : document.querySelector('input'),
   loader : document.getElementById('loader'),
   openSpotify : document.getElementById('open-spotify-button'),
+  playIcon : document.getElementsByClassName('play-icon'),
+  playLink : document.getElementsByClassName('play-link'),
   searchBox : document.getElementById('search-box'),
   searchField : document.getElementById('artist-search-field'),
   searchForm : document.getElementById('artist-search-form'),
-  toolTip : document.getElementsByClassName('tooltip')
+  toolTip : document.getElementsByClassName('tooltip'),
 };

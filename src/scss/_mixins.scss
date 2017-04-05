@@ -1,0 +1,17 @@
+@import 'variables';
+@mixin flex($align, $justify) {
+    display: flex;
+    align-items: $align;
+    justify-content: $justify;
+}
+@mixin autoColor ($bgColor) {
+  @if ($bgColor == none) {
+    color: $grey;
+  }
+  @else if ($bgColor == #EFEFD5) {
+    color: $grey;
+  }
+  @else {
+    color: $white;
+  }
+}
