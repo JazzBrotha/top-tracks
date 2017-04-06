@@ -15,8 +15,13 @@ export default {
         // Get all albums for artist
         let albums = await Model.getAlbums(artist);
 
+        if (albums === 'error') {
+          View.connectionError();
+          View.removeClass(Elements.loader, 'loading');
+        }
+
         // Inform user if no albums were found for artist
-        if (albums.length < 1) {
+        else if (albums.length < 1) {
             View.clearHtml(Elements.info);
             View.displayErrorMessage(artist);
             View.removeClass(Elements.loader, 'loading');
@@ -37,8 +42,18 @@ export default {
                 // Get track ids
                 let trackIds = await Model.getTrackIds(album.id);
 
+                if (trackIds === 'error') {
+                  View.connectionError();
+                  View.removeClass(Elements.loader, 'loading');
+                }
+
                 // Get tracks
                 let tracks = await Model.getTracks(trackIds.join());
+
+                if (tracks === 'error') {
+                  View.connectionError();
+                  View.removeClass(Elements.loader, 'loading');
+                }
 
                 // Look for non exact matches
                 if (album.artists[0].name.toLowerCase() === artist.toLowerCase() || album.artists[0].name.toLowerCase() === `the ${artist.toLowerCase()}`) {

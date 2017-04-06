@@ -79,5 +79,8 @@ addClass(element, cssClass) {
 removeClass(element, cssClass) {
   element.classList.remove(cssClass);
 },
+connectionError() {
+  Elements.errorMessage.innerHTML = `<h2>Sorry, could not connect to Spotify. Please refresh your browser or try again later.</h2>`;
+}
 
  };

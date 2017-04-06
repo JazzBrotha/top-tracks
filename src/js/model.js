@@ -17,6 +17,8 @@ export default {
 
         catch (error) {
             console.log(`Could not get artist information: ${error}`);
+            return 'error';
+
         }
     },
 
@@ -45,6 +47,7 @@ export default {
 
         catch (error) {
             console.log(`Could not get album information: ${error}`);
+            return 'error';
         }
     },
 
@@ -64,6 +67,7 @@ export default {
 
         catch (error) {
             console.log(`Could not get track rating information: ${error}`);
+            return 'error';
         }
     }
 
