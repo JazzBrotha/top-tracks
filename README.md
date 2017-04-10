@@ -5,10 +5,11 @@ It uses ES2016 `async function` along with `fetch API` to access the Spotify Web
 
 This project is live on: https://jazzbrotha.github.io/top-tracks/
 
-## Upcoming Features
+## Upcoming Features/Fixes
 * Fully responsive
     - The app currently supports all devices. However, the design is not optimized due to issues with the Spectre.css framework.
 * Allow user to create playlist on their Spotify account based on search.
+* Prevent other bands from displaying when including "the" in search.
 
 ## Browser Support
 * Firefox 52+
@@ -36,4 +37,4 @@ This project is live on: https://jazzbrotha.github.io/top-tracks/
 **Education:** Front End Developer, Nackademin
 
 ## License
-MIT License.
+[MIT License](https://github.com/JazzBrotha/top-tracks/blob/master/LICENSE)
