@@ -1,15 +1,15 @@
 # top-tracks
-This app searches Spotify and displays an artist's top 50 rated songs, as requested by the user.
+Play the top 50 rated songs by your favorite artist based on their popularity on Spotify.
 
-It uses ES2016 `async function` along with `fetch API` to access the Spotify Web API.
+Find it live [here](https://jazzbrotha.github.io/top-tracks)
 
-This project is live on: https://jazzbrotha.github.io/top-tracks/
-
-## Upcoming Features/Fixes
+## 1.1 Features/Fixes
 * Fully responsive
-    - The app currently supports all devices. However, the design is not optimized due to issues with the Spectre.css framework.
-* Allow user to create playlist on their Spotify account based on search.
-* Prevent other bands from displaying when including "the" in search.
+* Prevented other bands from displaying when including "the" in search
+
+## Suggested Features/Fixes
+* Allow user to create playlist on their Spotify account based on search
+* Improve search research further
 
 ## Browser Support
 * Firefox 52+
@@ -28,13 +28,9 @@ This project is live on: https://jazzbrotha.github.io/top-tracks/
 ## Resources
 * [Spotify Web API](https://developer.spotify.com/web-api/)
 * [Spectre.css](https://github.com/picturepan2/spectre)
-* [Font Awesome](http://fontawesome.io/)
-* [Pixabay](https://pixabay.com/)
-
-## Author Info
-**Name:** Mattias Östblom
-
-**Education:** Front End Developer, Nackademin
+* [Font Awesome](http://fontawesome.io)
+* [Pixabay](https://pixabay.com)
+* [Free Logo Design](https://www.freelogodesign.org)
 
 ## License
 [MIT License](https://github.com/JazzBrotha/top-tracks/blob/master/LICENSE)
