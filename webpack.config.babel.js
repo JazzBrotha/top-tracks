@@ -1,14 +1,8 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import path from 'path';
-
-const file = name => path.resolve(__dirname, name);
 
 module.exports = {
-	// context: file('src/js'),
 	entry: './src/js/app.js',
 	output: {
-		// path: file('build'),
-		// publicPath: '/',
 		path: 'dist',
 		filename: 'bundle.js'
 	},
@@ -30,9 +24,7 @@ module.exports = {
 	plugins: [
 		new HtmlWebpackPlugin({
 			minify: { collapseWhitespace: true },
-			// template: path.join(__dirname, 'src', 'index.html'),
 			template: './src/index.ejs',
-			// filename: './index.html'
 		})
 	],
 

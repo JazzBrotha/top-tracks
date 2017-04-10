@@ -5,7 +5,7 @@ export default {
        Elements.info.innerHTML = '';
        tracks.forEach((track, index) => {
        Elements.info.innerHTML += `
-            <div class="column col-xs-12 col-sm-4 col-md-4 col-lg-3 col-xl-2">
+            <div class="column col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2">
             <div class="card card-no-border">
               <div class="card-header card-header-less-padding">
                 <div class="columns bgc-grey text-center">
@@ -25,7 +25,9 @@ export default {
               <div class="card-body bgc-black">
               <div class="play-icon-holder text-center">
                 <a class="play-link">
+                <div class="flex-center wh-100">
                   <span class="play-icon tooltip"></span>
+                </div>
                   <div class="overlay"></div>
                 </a>
                 <img class="img-responsive img-min-height album-cover">
@@ -39,8 +41,7 @@ export default {
      let songLengthStr = track.duration_ms.toString();
      Elements.toolTip[index].setAttribute('data-tooltip', `${songLengthStr[0]}:${songLengthStr[1]}${songLengthStr[2]}`);
 
-     // Don't load on mobile
-     if (screen.width > 425) {
+
        Elements.albumCover[index].style.display = 'block';
      // Check if track has album image
      if (track.album.images.length < 1) {
@@ -48,7 +49,6 @@ export default {
      }
      else {
        Elements.albumCover[index].src = `${track.album.images[0].url}`;
-     }
      }
 
    });
