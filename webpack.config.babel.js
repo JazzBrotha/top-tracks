@@ -28,8 +28,8 @@ module.exports = {
 		})
 	],
 
-	// node: false,
-	// devtool: 'source-map',
+	node: false,
+	devtool: 'source-map',
 
 	devServer: {
 		port: process.env.PORT || 8666,
