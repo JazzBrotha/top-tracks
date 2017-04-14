@@ -1,7 +1,7 @@
-# top-tracks
+# Top Tracks
 Play the top 50 rated songs by your favorite artist based on their popularity on Spotify.
 
-Find it live [here](https://jazzbrotha.github.io/top-tracks).
+[Live](https://jazzbrotha.github.io/top-tracks).
 
 ## 1.1 Features/Fixes
 * Fully responsive
