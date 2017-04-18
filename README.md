@@ -1,7 +1,7 @@
-# top-tracks
+# Top Tracks
 Play the top 50 rated songs by your favorite artist based on their popularity on Spotify.
 
-Find it live [here](https://jazzbrotha.github.io/top-tracks).
+[Live](https://jazzbrotha.github.io/top-tracks)
 
 ## 1.1 Features/Fixes
 * Fully responsive
@@ -9,7 +9,7 @@ Find it live [here](https://jazzbrotha.github.io/top-tracks).
 
 ## Suggested Features/Fixes
 * Allow user to create playlist on their Spotify account based on search
-* Improve search research further
+* Improve search results further
 
 ## Browser Support
 * Firefox 52+
@@ -19,7 +19,6 @@ Find it live [here](https://jazzbrotha.github.io/top-tracks).
 * iOS Safari 10.3
 * Android Browser 56
 * Chrome for Android 57
-* [Upcoming support](http://caniuse.com/#search=async%20functions)
 
 ## Technologies
 * [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
