@@ -20,6 +20,8 @@ Play the top 50 rated songs by your favorite artist based on their popularity on
 * Android Browser 56
 * Chrome for Android 57
 
+Please note that your web browser needs to support Flash in order for the Spotify widgets to function properly.
+
 ## Technologies
 * [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
 * [async function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function)
