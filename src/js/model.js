@@ -4,13 +4,13 @@ export default {
         try {
 
             // Fetching all albums from artist
-            let albums = await fetch(`https://api.spotify.com/v1/search?q=artist:${artist}&type=album`);
+            const albums = await fetch(`https://api.spotify.com/v1/search?q=artist:${artist}&type=album`);
 
             // Parse album object
-            let parsedAlbums = await albums.json();
+            const parsedAlbums = await albums.json();
 
             // Create album array
-            let albumArr = parsedAlbums.albums.items;
+            const albumArr = parsedAlbums.albums.items;
 
             return albumArr;
         }
@@ -27,18 +27,18 @@ export default {
         try {
 
             // Fetch track object from album
-            let tracks = await fetch(`https://api.spotify.com/v1/albums/${albumId}/tracks`);
+            const tracks = await fetch(`https://api.spotify.com/v1/albums/${albumId}/tracks`);
 
             // Parse track object
-            let parsedTracks = await tracks.json();
+            const parsedTracks = await tracks.json();
 
             // Create tracklist array
-            let trackList = parsedTracks.items;
+            const trackList = parsedTracks.items;
 
             let trackIds = [];
 
             // Get ids from tracklist
-            for (let track of trackList) {
+            for (const track of trackList) {
                 trackIds.push(track.id);
             }
 
@@ -56,10 +56,10 @@ export default {
         try {
 
             // Fetch track objects
-            let trackList = await fetch(`https://api.spotify.com/v1/tracks/?ids=${trackIds}`);
+            const trackList = await fetch(`https://api.spotify.com/v1/tracks/?ids=${trackIds}`);
 
             // Parse track objects
-            let parsedTrackList = await trackList.json();
+            const parsedTrackList = await trackList.json();
 
             // Return tracks
             return parsedTrackList.tracks;

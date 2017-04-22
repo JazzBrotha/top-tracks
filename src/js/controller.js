@@ -10,10 +10,10 @@ export default {
         View.addClass(Elements.loader, 'loading');
 
         // Get name of artist from user input
-        let artist = Elements.searchField.value;
+        const artist = Elements.searchField.value;
 
         // Get all albums for artist
-        let albums = await Model.getAlbums(artist);
+        const albums = await Model.getAlbums(artist);
 
         if (albums === 'error') {
           View.connectionError();
@@ -37,10 +37,10 @@ export default {
             let trackList = [];
 
             // Get each album's tracks
-            for (let album of albums) {
+            for (const album of albums) {
 
                 // Get track ids
-                let trackIds = await Model.getTrackIds(album.id);
+                const trackIds = await Model.getTrackIds(album.id);
 
                 if (trackIds === 'error') {
                   View.connectionError();
@@ -48,7 +48,7 @@ export default {
                 }
 
                 // Get tracks
-                let tracks = await Model.getTracks(trackIds.join());
+                const tracks = await Model.getTracks(trackIds.join());
 
                 if (tracks === 'error') {
                   View.connectionError();
@@ -71,15 +71,15 @@ export default {
             }
             else {
                 // Reduce to single array
-                let flatten = trackList.reduce((cur, prev) => cur.concat(prev));
+                const flatten = trackList.reduce((cur, prev) => cur.concat(prev));
 
                 // Sort tracks after rating
-                let ratingArr = flatten.sort(function(a, b) {
+                const ratingArr = flatten.sort(function(a, b) {
                     return b.popularity - a.popularity;
                 });
 
                 // Get top 50 tracks
-                let finalArr = ratingArr.filter((track, index) => {
+                const finalArr = ratingArr.filter((track, index) => {
                     if (index <= 50)
                         return track;
                 });

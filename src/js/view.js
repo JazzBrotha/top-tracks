@@ -38,9 +38,8 @@ export default {
      `;
 
     // Tooltip assignment
-     let songLengthStr = track.duration_ms.toString();
+     const songLengthStr = track.duration_ms.toString();
      Elements.toolTip[index].setAttribute('data-tooltip', `${songLengthStr[0]}:${songLengthStr[1]}${songLengthStr[2]}`);
-
 
        Elements.albumCover[index].style.display = 'block';
      // Check if track has album image
@@ -58,7 +57,6 @@ export default {
      Elements.playLink[index].onmouseover = function() {
        if (!this.innerHTML.includes('iframe')) {
         Elements.playIcon[index].innerHTML = `<iframe src="https://embed.spotify.com/?uri=${track.uri}" height="80" width="250" frameborder="0" allowtransparency="true"></iframe>`;
-        // Keep div transformed when playing son
        }
        return;
      };
