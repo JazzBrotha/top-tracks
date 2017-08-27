@@ -4,89 +4,89 @@ import Model from './model'
 
 export default {
 
-    getTopRatedTracks: async function() {
+  getTopRatedTracks: async function () {
+      // Display loading symbol to inform user
+    View.addClass(Elements.loader, 'loading')
 
-        // Display loading symbol to inform user
-        View.addClass(Elements.loader, 'loading');
+    const token = await Model.getAccess()
 
+    if (token !== 'Could not get access token') {
         // Get name of artist from user input
-        const artist = Elements.searchField.value;
+      const artist = Elements.searchField.value
 
         // Get all albums for artist
-        const albums = await Model.getAlbums(artist);
+      const albums = await Model.getAlbums(artist, token)
 
-        if (albums === 'error') {
-          View.connectionError();
-          View.removeClass(Elements.loader, 'loading');
-        }
-
+      if (albums === 'error') {
+        View.connectionError()
+        View.removeClass(Elements.loader, 'loading')
+      }
         // Inform user if no albums were found for artist
-        else if (albums.length < 1) {
-            View.clearHtml(Elements.info);
-            View.displayErrorMessage(artist);
-            View.removeClass(Elements.loader, 'loading');
-        }
+      else if (albums.length < 1) {
+        View.clearHtml(Elements.info)
+        View.displayErrorMessage(artist)
+        View.removeClass(Elements.loader, 'loading')
+      }
 
         // Proceed if albums were found
-        else {
-
+      else {
             // Clear error message
-            View.clearHtml(Elements.errorMessage);
+        View.clearHtml(Elements.errorMessage)
 
             // Store all artist's tracks
-            let trackList = [];
+        let trackList = []
 
             // Get each album's tracks
-            for (const album of albums) {
-
+        for (const album of albums) {
                 // Get track ids
-                const trackIds = await Model.getTrackIds(album.id);
+          const trackIds = await Model.getTrackIds(album.id, token)
 
-                if (trackIds === 'error') {
-                  View.connectionError();
-                  View.removeClass(Elements.loader, 'loading');
-                }
+          if (trackIds === 'error') {
+            View.connectionError()
+            View.removeClass(Elements.loader, 'loading')
+          }
 
                 // Get tracks
-                const tracks = await Model.getTracks(trackIds.join());
+          const tracks = await Model.getTracks(trackIds.join(), token)
 
-                if (tracks === 'error') {
-                  View.connectionError();
-                  View.removeClass(Elements.loader, 'loading');
-                }
+          if (tracks === 'error') {
+            View.connectionError()
+            View.removeClass(Elements.loader, 'loading')
+          }
 
                 // Look for non exact matches
-                if (album.artists[0].name.toLowerCase() === artist.toLowerCase() || album.artists[0].name.toLowerCase() === `the ${artist.toLowerCase()}`) {
-
+          if (album.artists[0].name.toLowerCase() === artist.toLowerCase() || album.artists[0].name.toLowerCase() === `the ${artist.toLowerCase()}`) {
                     // Add to trackList
-                    trackList.push(tracks);
-                }
-            }
+            trackList.push(tracks)
+          }
+        }
 
             // Inform user if tracklist is empty
-            if (trackList.length < 1) {
-                View.clearHtml(Elements.info);
-                View.displayErrorMessage(artist);
-                View.removeClass(Elements.loader, 'loading');
-            }
-            else {
+        if (trackList.length < 1) {
+          View.clearHtml(Elements.info)
+          View.displayErrorMessage(artist)
+          View.removeClass(Elements.loader, 'loading')
+        } else {
                 // Reduce to single array
-                const flatten = trackList.reduce((cur, prev) => cur.concat(prev));
+          const flatten = trackList.reduce((cur, prev) => cur.concat(prev))
 
                 // Sort tracks after rating
-                const ratingArr = flatten.sort(function(a, b) {
-                    return b.popularity - a.popularity;
-                });
+          const ratingArr = flatten.sort(function (a, b) {
+            return b.popularity - a.popularity
+          })
 
                 // Get top 50 tracks
-                const finalArr = ratingArr.filter((track, index) => {
-                    if (index <= 50)
-                        return track;
-                });
+          const finalArr = ratingArr.filter((track, index) => {
+            if (index <= 50) { return track }
+          })
 
                 // Display tracks on page
-                View.displaySongs(finalArr);
-            }
+          View.displaySongs(finalArr)
         }
+      }
+    } else {
+      View.connectionError()
+      View.removeClass(Elements.loader, 'loading')
     }
-};
+  }
+}

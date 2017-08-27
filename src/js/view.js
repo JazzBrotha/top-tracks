@@ -1,10 +1,10 @@
 import Elements from './elements'
 
 export default {
-    displaySongs(tracks) {
-       Elements.info.innerHTML = '';
-       tracks.forEach((track, index) => {
-       Elements.info.innerHTML += `
+  displaySongs (tracks) {
+    Elements.info.innerHTML = ''
+    tracks.forEach((track, index) => {
+      Elements.info.innerHTML += `
             <div class="column col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2">
             <div class="card card-no-border">
               <div class="card-header card-header-less-padding">
@@ -35,50 +35,47 @@ export default {
               </div>
             </div>
          </div>
-     `;
+     `
 
     // Tooltip assignment
-     const songLengthStr = track.duration_ms.toString();
-     Elements.toolTip[index].setAttribute('data-tooltip', `${songLengthStr[0]}:${songLengthStr[1]}${songLengthStr[2]}`);
+      const songLengthStr = track.duration_ms.toString()
+      Elements.toolTip[index].setAttribute('data-tooltip', `${songLengthStr[0]}:${songLengthStr[1]}${songLengthStr[2]}`)
 
-       Elements.albumCover[index].style.display = 'block';
+      Elements.albumCover[index].style.display = 'block'
      // Check if track has album image
-     if (track.album.images.length < 1) {
-       Elements.albumCover[index].src = './dist/pics/album-cover.png';
-     }
-     else {
-       Elements.albumCover[index].src = `${track.album.images[0].url}`;
-     }
-
-   });
+      if (track.album.images.length < 1) {
+        Elements.albumCover[index].src = './dist/pics/album-cover.png'
+      } else {
+        Elements.albumCover[index].src = `${track.album.images[0].url}`
+      }
+    })
 
    // Embed iframes to be able to play directly from page
-   tracks.forEach((track, index) => {
-     Elements.playLink[index].onmouseover = function() {
-       if (!this.innerHTML.includes('iframe')) {
-        Elements.playIcon[index].innerHTML = `<iframe src="https://embed.spotify.com/?uri=${track.uri}" height="80" width="250" frameborder="0" allowtransparency="true"></iframe>`;
-       }
-       return;
-     };
-   });
+    tracks.forEach((track, index) => {
+      Elements.playLink[index].onmouseover = function () {
+        if (!this.innerHTML.includes('iframe')) {
+          Elements.playIcon[index].innerHTML = `<iframe src="https://embed.spotify.com/?uri=${track.uri}" height="80" width="250" frameborder="0" allowtransparency="true"></iframe>`
+        }
+      }
+    })
 
-     this.removeClass(Elements.loader, 'loading');
- },
+    this.removeClass(Elements.loader, 'loading')
+  },
 
-clearHtml(element) {
-  element.innerHTML = '';
-},
-displayErrorMessage(artist) {
-  Elements.errorMessage.innerHTML = `<h2>Sorry, no songs found for "${artist}"</h2>`;
-},
-addClass(element, cssClass) {
-  element.classList.add(cssClass);
-},
-removeClass(element, cssClass) {
-  element.classList.remove(cssClass);
-},
-connectionError() {
-  Elements.errorMessage.innerHTML = `<h2>Sorry, could not connect to Spotify. Please try again later or consider switching web browser.</h2>`;
+  clearHtml (element) {
+    element.innerHTML = ''
+  },
+  displayErrorMessage (artist) {
+    Elements.errorMessage.innerHTML = `<h2>Sorry, no songs found for "${artist}"</h2>`
+  },
+  addClass (element, cssClass) {
+    element.classList.add(cssClass)
+  },
+  removeClass (element, cssClass) {
+    element.classList.remove(cssClass)
+  },
+  connectionError () {
+    Elements.errorMessage.innerHTML = `<h2>Sorry, could not connect to Spotify. Please try again later or consider switching web browser.</h2>`
+  }
+
 }
-
- };
