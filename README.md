@@ -1,4 +1,4 @@
-**Currently not live due to changes to the spotify API**
+**Note: Currently not live due to changes to the spotify API**
 
 # Top Tracks
 Play the top 50 rated songs by your favorite artist based on their popularity on Spotify.
