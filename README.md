@@ -1,4 +1,4 @@
-**Note: Currently not live due to changes to the spotify API**
+**Note: Currently not live due to changes to the spotify API. You can still run this app by cloning the repository and setting up your own `.env` variables. This requires a registered Spotify `CLIENT_ID` and `CLIENT_SECRET`.**
 
 # Top Tracks
 Play the top 50 rated songs by your favorite artist based on their popularity on Spotify.
