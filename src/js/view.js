@@ -68,6 +68,9 @@ export default {
   displayErrorMessage (artist) {
     Elements.errorMessage.innerHTML = `<h2>Sorry, no songs found for "${artist}"</h2>`
   },
+  displayLoadingMessage (message) {
+    Elements.errorMessage.innerHTML = `${message}`
+  },
   addClass (element, cssClass) {
     element.classList.add(cssClass)
   },

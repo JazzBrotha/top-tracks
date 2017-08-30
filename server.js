@@ -53,12 +53,13 @@ app.post('/get-trackids', function (req, res) {
     json: true
   }, function (error, response, body) {
     if (error) res.send(`error: ${response.statusCode}`)
+    if(body !== null)
     res.json(body)
   })
 })
 
 app.post('/get-tracks', function (req, res) {
-  const trackIds = req.body.tracksIds
+  const trackIds = req.body.trackIds
   const token = req.body.token
   request.get({
     url: `https://api.spotify.com/v1/tracks/?ids=${trackIds}`,
@@ -66,6 +67,7 @@ app.post('/get-tracks', function (req, res) {
     json: true
   }, function (error, response, body) {
     if (error) res.send(`error: ${response.statusCode}`)
+    if(body !== null)      
     res.json(body)
   })
 })

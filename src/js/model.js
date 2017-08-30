@@ -94,8 +94,10 @@ export default {
         // Parse track objects
         const parsedTrackList = await response.json()
 
+        const tracks = parsedTrackList.tracks
+
         // Return tracks
-        return parsedTrackList.tracks
+        return tracks
       }
     } catch (error) {
       console.log(`Could not get track rating information: ${error}`)
